@@ -13,7 +13,7 @@ export default function Home() {
 
 
     return (
-        <>
+        <div className='dotted-background antialiased'>
             <div className='mt-4'>
                 <nav className='flex items-center justify-center pb-5 pt-4'>
                     <div className='w-16 h-full'>
@@ -87,6 +87,6 @@ export default function Home() {
                     <b className='text-sekunder-red'>S</b> Perfection
                 </ScrambledText>
             </div >
-        </>
+        </div>
     )
 }
