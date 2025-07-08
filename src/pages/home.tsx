@@ -14,10 +14,10 @@ export default function Home() {
 
     return (
         <div className='dotted-background antialiased'>
-            <div className='mt-4'>
+            <div className=''>
                 <nav className='flex items-center justify-center pb-5 pt-4'>
                     <div className='w-16 h-full'>
-                        <img src='/pixels.png' alt='gdg (Goole Developer Group) logo' loading='lazy' />
+                        <img src='/gdg.png' alt='gdg (Goole Developer Group) logo' loading='lazy' />
                     </div>
                 </nav>
             </div>
