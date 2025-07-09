@@ -22,17 +22,17 @@ export default function Home() {
                 </nav>
             </div>
 
-            <div className='mt-6 md:mt-16 mx-auto w-full h-fit md:w-3/4'>
+            <div className='mt-6 md:mt-16 mx-auto w-full md:w-3/4'>
                 <div className='px-16 flex flex-col items-center'>
                     <span className='font-subhero text-sm sm:text-2xl md:mb-6 font-bold text-slate-500'>welcome to</span>
                     <PixelTransition
-                        className='w-full h-full overflow-hidden bg-transparent'
+                        className='w-full h-fit overflow-hidden bg-transparent'
                         gridSize={10}
                         pixelColor='#fff'
                         animationStepDuration={0.3}
                         firstContent={
                             <div className='grid place-items-center w-full h-full'>
-                                <img className='w-full h-fit' src="/pixels.png" alt="pixels challenge" loading='lazy' />
+                                <img className='w-full h-auto' src="/pixels.png" alt="pixels challenge" loading='lazy' />
                             </div>
                         }
                         secondContent={
