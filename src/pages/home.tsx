@@ -13,7 +13,7 @@ export default function Home() {
 
 
     return (
-        <div className='dotted-background antialiased'>
+        <div className='scroll-smooth dotted-background antialiased'>
             <div className=''>
                 <nav className='flex items-center justify-center pb-5 pt-4'>
                     <div className='w-16 h-full'>
@@ -41,13 +41,13 @@ export default function Home() {
                         }
                     />
                     <div className='mt-6 md:mt-20 flex flex-col md:flex-row items-center gap-12 md:gap-20'>
-                        <a href="#_" className='btn-3d bg-primer-green rounded-none font-display text-xs px-2 py-3 md:w-none md:text-lg md:px-5 md:py-4'>get started</a>
-                        <a href="#_" className='font-display text-xs md:text-lg hover:underline'>get started</a>
+                        <a href="#countdown" className='btn-3d bg-primer-green rounded-none font-display text-xs px-2 py-3 md:w-none md:text-lg md:px-5 md:py-4'>get started</a>
+                        <a href="#_" onClick={() => alert('handbook will available soon')} className='font-display text-xs md:text-lg hover:underline'>get handbook</a>
                     </div>
                 </div>
             </div>
 
-            <div className='mt-28 md:mt-48 mx-auto px-12 md:px-36'>
+            <div id='countdown' className='mt-28 md:mt-48 mx-auto px-12 md:px-36'>
                 <PixelTransition
                     className='w-full h-full md:h-[35rem] overflow-hidden rounded-xl bg-transparent'
                     gridSize={10}
