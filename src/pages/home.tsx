@@ -22,7 +22,7 @@ export default function Home() {
                 </nav>
             </div>
 
-            <div className='mt-6 md:mt-16 mx-auto w-full md:w-3/4'>
+            <div className='mt-6 md:mt-16 mx-auto w-full h-fit md:w-3/4'>
                 <div className='px-16 flex flex-col items-center'>
                     <span className='font-subhero text-sm sm:text-2xl md:mb-6 font-bold text-slate-500'>welcome to</span>
                     <PixelTransition
