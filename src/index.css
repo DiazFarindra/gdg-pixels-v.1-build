@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Press+Start+2P&display=swap');
 
 @import 'tailwindcss';
 
@@ -15,11 +15,10 @@
 }
 
 @theme {
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
-    --font-mono: 'Geist Mono', monospace;
     --font-display: 'Press Start 2P', cursive;
-    --font-hero: 'ADDLG___';
-    --font-subhero: '11px3bus';
+    --font-mono: 'Geist Mono', monospace;
+    --font-hero: 'ADDLG___', cursive;
+    --font-subhero: '11px3bus', cursive;
 
     --color-primer-green: #bff6be;
     --color-primer-blue: #bbdbf7;
