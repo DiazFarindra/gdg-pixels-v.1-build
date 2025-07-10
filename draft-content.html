@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIXELS Challenge 2.0 - AI-Driven Sustainable Product Innovation</title>
+    <!-- Chosen Palette: Google Inspired Light -->
+    <!-- Application Structure Plan: A single-page scrolling application with a sticky navigation bar for easy access to sections. The structure follows a logical narrative for an event: introduction (Hero), urgency (Countdown), details (About, Themes, Timeline), action (Requirements, Register), and support (FAQ). This linear flow is intuitive for users wanting to learn about and register for the event. Interactive elements like the countdown and FAQ accordion enhance engagement without overcomplicating the experience. -->
+    <!-- Visualization & Content Choices: Report Info: Event timeline -> Goal: Show chronological flow -> Viz: Vertical timeline (HTML/CSS) -> Interaction: None, static display -> Justification: Clear, scannable presentation of key dates. Report Info: FAQ -> Goal: Answer questions concisely -> Viz: Accordion (HTML/CSS/JS) -> Interaction: Click to expand/collapse -> Justification: Saves space and reduces information overload. Report Info: Countdown -> Goal: Create urgency -> Viz: Dynamic numeric display (JS) -> Interaction: Live updates -> Justification: Engages users and highlights the upcoming start date. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fallback for Google Sans */
+        @font-face {
+          font-family: 'Google Sans';
+          font-style: normal;
+          font-weight: 400;
+          src: url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nC16hvkC1ks3o3P52K_uRs.woff2) format('woff2');
+        }
+        
+        body {
+            font-family: 'Google Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #3c4043;
+        }
+        .font-title {
+            font-family: 'Press Start 2P', cursive;
+        }
+        .font-subtitle {
+            font-family: 'VT323', monospace;
+        }
+        .section-title {
+            font-family: 'Google Sans', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            line-height: 2.75rem;
+            letter-spacing: -0.02em;
+            color: #202124;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-block;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: #4285F4;
+            color: white;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.25);
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #4285F4;
+            border-color: #dadce0;
+        }
+        .btn-secondary:hover {
+            background-color: #f8f9fa;
+            border-color: #d2e3fc;
+        }
+        .nav-link {
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #4285F4;
+        }
+        .card {
+            border-radius: 0.75rem;
+            border: 1px solid #dadce0;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+        .faq-question.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAFeCAYAAAB2OesvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHic7N13fFzV9f/xT92qVlW3elW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW' alt="GDG On Campus STT Terpadu Nurul Fikri Logo" class="h-10">
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="nav-link text-gray-600">Tentang</a>
+                <a href="#themes" class="nav-link text-gray-600">Tema</a>
+                <a href="#timeline" class="nav-link text-gray-600">Timeline</a>
+                <a href="#faq" class="nav-link text-gray-600">FAQ</a>
+            </nav>
+            <a href="https://s.id/PIXELS-Regist" target="_blank" class="hidden md:block btn btn-primary">Daftar Sekarang</a>
+            <button id="mobile-menu-button" class="md:hidden text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2 bg-white">
+            <a href="#about" class="block nav-link text-gray-600 py-2">Tentang</a>
+            <a href="#themes" class="block nav-link text-gray-600 py-2">Tema</a>
+            <a href="#timeline" class="block nav-link text-gray-600 py-2">Timeline</a>
+            <a href="#faq" class="block nav-link text-gray-600 py-2">FAQ</a>
+            <a href="https://s.id/PIXELS-Regist" target="_blank" class="block btn btn-primary mt-2">Daftar Sekarang</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- BAGIAN 1: HERO SECTION -->
+        <section id="hero" class="pt-36 pb-24 bg-white">
+            <div class="container mx-auto text-center px-6">
+                <h1 class="font-title text-3xl md:text-5xl text-gray-800 leading-tight mb-4">PIXELS CHALLENGE</h1>
+                <p class="font-subtitle text-2xl md:text-4xl text-gray-500 mb-10">Perfecting Interfaces for eXcellent Experience and Lasting Solution</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="https://s.id/PIXELS-Regist" target="_blank" class="btn btn-primary w-full sm:w-auto">Registrasi Sekarang</a>
+                    <a href="#" class="btn btn-secondary w-full sm:w-auto" id="guidebook-btn">View Guide Book</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: COUNTDOWN -->
+        <section id="countdown" class="py-12 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-xl font-medium text-gray-700 mb-6">Pendaftaran Ditutup Dalam</h2>
+                <div id="countdown-timer" class="flex justify-center gap-4 md:gap-8 text-gray-800">
+                    <div>
+                        <span id="days" class="text-4xl md:text-6xl font-bold text-blue-600">00</span>
+                        <p class="text-sm md:text-base text-gray-500 mt-1">Hari</p>
+                    </div>
+                    <div>
+                        <span id="hours" class="text-4xl md:text-6xl font-bold text-red-600">00</span>
+                        <p class="text-sm md:text-base text-gray-500 mt-1">Jam</p>
+                    </div>
+                    <div>
+                        <span id="minutes" class="text-4xl md:text-6xl font-bold text-yellow-500">00</span>
+                        <p class="text-sm md:text-base text-gray-500 mt-1">Menit</p>
+                    </div>
+                    <div>
+                        <span id="seconds" class="text-4xl md:text-6xl font-bold text-green-600">00</span>
+                        <p class="text-sm md:text-base text-gray-500 mt-1">Detik</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: APA ITU PIXELS CHALLENGE? -->
+        <section id="about" class="py-24">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-5">
+                    <h2 class="section-title">Apa itu PIXELS Challenge?</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg">
+                        <strong>PIXELS Challenge</strong> adalah lomba Desain Produk berbasis studi kasus yang mendorong peserta untuk menggabungkan konsep desain UI/UX dan Produk dengan Tujuan Pembangunan Berkelanjutan (SDGs).
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Kompetisi ini berfokus pada pengembangan solusi inovatif yang dapat diimplementasikan, dengan penekanan pada visual kreatif, kerja sama tim, pemecahan masalah, dan inovasi bisnis, serta <strong>wajib memanfaatkan potensi kecerdasan buatan (AI)</strong>.
+                    </p>
+                </div>
+                <div class="p-2 card bg-gray-50">
+                    <img src="https://placehold.co/600x400/BBDBF7/3c4043?text=Design+%26+Innovation" alt="Ilustrasi Inovasi dan Desain" class="rounded-lg w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: TEMA UTAMA -->
+        <section id="themes" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Pilih Tantanganmu</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Pilih salah satu dari tiga kategori topik berikut dan rancang solusi digital yang berdampak.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Theme Card 1 -->
+                    <div class="card bg-white p-8 text-center">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-[#BFF6BE] mb-5 mx-auto">
+                            <span class="text-5xl text-[#34A853]">&#127757;</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Sustainable</h3>
+                        <p class="text-gray-600">Solusi isu lingkungan, konsumsi dan produksi yang bertanggung jawab (SDG 12).</p>
+                    </div>
+                    <!-- Theme Card 2 -->
+                    <div class="card bg-white p-8 text-center">
+                        <div class="flex items-center justify-center h-20 w-20 rounded-full bg-[#BBDBF7] mb-5 mx-auto">
+                           <span class="text-5xl text-[#4285F4]">&#9992;</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Tourism</h3>
+                        <p class="text-gray-600">Solusi memajukan sektor pariwisata untuk pertumbuhan ekonomi yang layak (SDG 8).</p>
+                    </div>
+                    <!-- Theme Card 3 -->
+                    <div class="card bg-white p-8 text-center">
+                         <div class="flex items-center justify-center h-20 w-20 rounded-full bg-[#F7D7D7] mb-5 mx-auto">
+                            <span class="text-5xl text-[#EA4335]">&#10010;</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">HealthCare</h3>
+                        <p class="text-gray-600">Solusi meningkatkan aksesibilitas dan kualitas layanan kesehatan (SDG 3).</p>
+                    </div>
+                </div>
+                 <p class="text-center mt-10 text-sm text-gray-500 italic">Catatan: Semua solusi wajib mengintegrasikan inovasi berbasis AI.</p>
+            </div>
+        </section>
+
+        <!-- BAGIAN 5: TIMELINE -->
+        <section id="timeline" class="py-24">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16">
+                    <h2 class="section-title">Linimasa Acara</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Catat tanggal-tanggal penting berikut agar tidak ketinggalan!</p>
+                </div>
+                <div class="relative max-w-4xl mx-auto">
+                    <!-- Vertical Line -->
+                    <div class="absolute left-4 md:left-1/2 w-0.5 bg-gray-200 h-full"></div>
+                    <!-- Timeline Items -->
+                    <div id="timeline-container" class="space-y-12">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BAGIAN 6: PERSYARATAN & CARA DAFTAR -->
+        <section id="register" class="py-24 bg-gray-50">
+            <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20">
+                <!-- Persyaratan -->
+                <div>
+                     <h2 class="section-title mb-8">Persyaratan</h2>
+                     <ul class="space-y-5 text-gray-600">
+                         <li class="flex items-start gap-4">
+                            <span class="text-green-500 mt-1 text-xl">&#10003;</span>
+                            <span><strong>Peserta:</strong> Pelajar aktif tingkat SMA/SMK sederajat serta Mahasiswa aktif (S1/Diploma) dari seluruh Indonesia.</span>
+                         </li>
+                         <li class="flex items-start gap-4">
+                            <span class="text-green-500 mt-1 text-xl">&#10003;</span>
+                            <span><strong>Tim:</strong> Terdiri dari 2-4 orang. Minimal 2 anggota per tim wajib terdaftar sebagai member GDGoC NF. <em class="text-sm">(Belum jadi member? <a href="https://gdg.community.dev/gdg-on-campus-sekolah-tinggi-teknologi-terpadu-nurul-fikri-jakarta-indonesia/" target="_blank" class="text-blue-600 hover:underline">Daftar di sini</a>)</em>.</span>
+                         </li>
+                         <li class="flex items-start gap-4">
+                            <span class="text-green-500 mt-1 text-xl">&#10003;</span>
+                            <span><strong>Orisinalitas:</strong> Karya yang diajukan harus orisinal dan belum pernah diikutsertakan dalam kompetisi lain.</span>
+                         </li>
+                          <li class="flex items-start gap-4">
+                            <span class="text-green-500 mt-1 text-xl">&#10003;</span>
+                            <span><strong>Komitmen:</strong> Wajib mengikuti seluruh rangkaian acara dan aturan yang berlaku.</span>
+                         </li>
+                     </ul>
+                </div>
+                 <!-- Cara Daftar -->
+                <div>
+                     <h2 class="section-title mb-8">Cara Mendaftar</h2>
+                     <ol class="space-y-6 text-gray-600">
+                        <li class="flex items-start gap-4"><span class="font-bold text-blue-600 text-2xl">1.</span><span>Kunjungi link pendaftaran: <a href="https://s.id/PIXELS-Regist" target="_blank" class="font-semibold text-blue-600 hover:underline">s.id/PIXELS-Regist</a></span></li>
+                        <li class="flex items-start gap-4"><span class="font-bold text-blue-600 text-2xl">2.</span><span>Klik <strong>"Get Ticket"</strong> dan isi Google Form dengan data tim yang lengkap.</span></li>
+                        <li class="flex items-start gap-4"><span class="font-bold text-blue-600 text-2xl">3.</span><span>Setelah selesai, <strong>wajib bergabung ke Grup Whatsapp</strong> untuk mendapatkan semua informasi terbaru.</span></li>
+                     </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 8: FAQ -->
+        <section id="faq" class="py-24">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <div class="text-center mb-16">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                </div>
+                <div id="faq-container" class="space-y-4">
+                    <!-- FAQ items will be injected here by JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-gray-600 py-16">
+        <div class="container mx-auto px-6 text-center">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAFeCAYAAAB2OesvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHic7N13fFzV9f/xT92qVlW3elW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3VlW3.png" alt="GDG On Campus STT Terpadu Nurul Fikri Logo" class="h-10 mx-auto mb-6">
+            <p class="text-gray-500 mb-6">Diselenggarakan oleh Google Developer Group on Campus (GDGoC) STT Terpadu Nurul Fikri.</p>
+            <div class="mb-6">
+                <p class="text-gray-700 font-semibold">Hubungi Kami:</p>
+                <p class="text-gray-500">Amanda Fiqih Hauli: 0877-1275-4959</p>
+                <p class="text-gray-500">Alif Surya Pratama: 0812-8277-6949</p>
+            </div>
+            <p class="text-sm text-gray-400">&copy; 2025 PIXELS Challenge. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Countdown Timer
+    const countdownDate = new Date("June 30, 2025 23:59:59").getTime();
+    const countdownTimer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (document.getElementById('days')) {
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        if (distance < 0) {
+            clearInterval(countdownTimer);
+            if(document.getElementById('countdown-timer')) {
+                document.getElementById('countdown-timer').innerHTML = "<div class='text-2xl font-bold text-red-500'>Pendaftaran telah ditutup.</div>";
+            }
+        }
+    }, 1000);
+    
+    // Smooth scrolling & active nav link
+    const header = document.getElementById('header');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - header.offsetHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Timeline Data & Generation
+    const timelineData = [
+        { date: "12 - 30 Juni 2025", event: "Pendaftaran", description: "Buka pendaftaran untuk semua calon peserta.", color: 'blue' },
+        { date: "02 Juli 2025", event: "Technical Meeting", description: "Penjelasan teknis, aturan, dan kriteria penilaian.", color: 'red' },
+        { date: "03 Agustus 2025", event: "Mentorship 1", description: "Explore & Win: Ideation + Winning Mindset.", color: 'yellow' },
+        { date: "10 Agustus 2025", event: "Mentorship 2", description: "Sustainable Product Thinking & Deep Research.", color: 'green' },
+        { date: "16 Agustus 2025", event: "Mentorship 3", description: "Design Sprint: UI/UX Hands-on Workshop.", color: 'blue' },
+        { date: "24 Agustus 2025", event: "Mentorship 4", description: "Present & Persuade: Pitching for Impact.", color: 'red' },
+        { date: "31 Agustus 2025", event: "Batas Akhir Pengumpulan Karya", description: "Hari terakhir pengumpulan hasil karya.", color: 'yellow' },
+        { date: "01 - 14 September 2025", event: "Penilaian Karya", description: "Dewan juri profesional akan menilai semua karya.", color: 'green' },
+        { date: "15 September 2025", event: "Pengumuman Top 5 Finalis", description: "Pengumuman lima tim terbaik yang melaju ke babak final.", color: 'blue' },
+        { date: "27 September 2025", event: "Acara Puncak & Awarding", description: "Presentasi final dan malam penghargaan.", color: 'red' }
+    ];
+
+    const timelineContainer = document.getElementById('timeline-container');
+    const colors = {
+        blue: 'bg-[#4285F4]',
+        red: 'bg-[#EA4335]',
+        yellow: 'bg-[#F9AB00]',
+        green: 'bg-[#34A853]',
+    };
+    
+    timelineData.forEach((item, index) => {
+        const alignmentClass = index % 2 === 0 ? 'md:ml-auto md:pr-8' : 'md:mr-auto md:pl-8';
+        const dotPosition = index % 2 === 0 ? 'md:-right-2' : 'md:-left-2';
+        const timelineItem = `
+            <div class="relative w-full md:w-1/2 ${alignmentClass}">
+                <div class="absolute w-4 h-4 ${colors[item.color]} rounded-full mt-3 top-0 ${dotPosition} left-2 md:left-1/2 transform -translate-x-1/2 border-4 border-white"></div>
+                <div class="card bg-white p-6">
+                    <p class="font-semibold text-blue-600 mb-1">${item.date}</p>
+                    <h4 class="text-lg font-bold text-gray-800 mb-2">${item.event}</h4>
+                    <p class="text-sm text-gray-600">${item.description}</p>
+                </div>
+            </div>
+        `;
+        timelineContainer.innerHTML += timelineItem;
+    });
+
+    // FAQ Data & Generation
+    const faqData = [
+        {
+            question: "Siapa saja yang boleh mendaftar?",
+            answer: "Pelajar aktif tingkat SMA/SMK sederajat dan Mahasiswa aktif (S1/Diploma) dari seluruh Perguruan Tinggi (PTN/PTS) di Indonesia."
+        },
+        {
+            question: "Apakah kompetisi ini berbayar?",
+            answer: "GRATIS untuk tim yang seluruh anggotanya merupakan mahasiswa STT Terpadu Nurul Fikri. Untuk tim lainnya, dikenakan biaya pendaftaran: Gelombang 1 (1-10 Juli 2025): Rp30.000,- dan Gelombang 2 (11-20 Juli 2025): Rp60.000,-."
+        },
+        {
+            question: "Apakah saya harus sudah punya tim saat mendaftar?",
+            answer: "Ya, pendaftaran dilakukan per tim (2-4 orang). Pendaftaran diwakilkan oleh ketua tim."
+        },
+        {
+            question: "Bagaimana jika ada anggota tim yang bukan member GDGoC NF?",
+            answer: "Anggota tersebut bisa mendaftar sebagai member terlebih dahulu melalui link yang tersedia di bagian persyaratan."
+        }
+    ];
+
+    const faqContainer = document.getElementById('faq-container');
+    faqData.forEach(item => {
+        const faqItem = document.createElement('div');
+        faqItem.classList.add('card', 'bg-white', 'overflow-hidden');
+        faqItem.innerHTML = `
+            <button class="faq-question w-full text-left p-5 flex justify-between items-center focus:outline-none">
+                <span class="font-semibold text-gray-800">${item.question}</span>
+                <span class="faq-arrow transform transition-transform duration-300">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </span>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                <p class="p-5 pt-0 text-gray-600">${item.answer}</p>
+            </div>
+        `;
+        faqContainer.appendChild(faqItem);
+    });
+
+    // FAQ Accordion Logic
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const wasOpen = button.classList.contains('open');
+
+            // Close all items
+            document.querySelectorAll('.faq-answer').forEach(el => el.style.maxHeight = null);
+            document.querySelectorAll('.faq-question').forEach(el => el.classList.remove('open'));
+
+            if (!wasOpen) {
+                button.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+    // Guide Book button (inactive)
+    document.getElementById('guidebook-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Guide Book akan segera tersedia. Silakan cek kembali nanti.');
+    });
+
+});
+</script>
+
+</body>
+</html>
