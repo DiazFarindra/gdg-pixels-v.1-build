@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Counter from '../blocks/Components/Counter/Counter';
+import { Counter } from '../components';
 
 const Countdown = ({ initialSeconds = 60 }) => {
     const [timeRemaining, setTimeRemaining] = useState(initialSeconds);
