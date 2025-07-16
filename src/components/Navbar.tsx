@@ -101,7 +101,7 @@ const Navbar = () => {
         <div className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-            {/* Centered Logo - Mobile */}
+            {/* Centered Logo - Mobile
     <div className="lg:block fixed top-2 left-1/2 transform -translate-x-1/2 z-[10000]">
         <a
           href="/"
@@ -116,7 +116,7 @@ const Navbar = () => {
             />
           </div>
         </a>
-    </div>
+    </div> */}
           <div className="px-2 pt-2 pb-3 space-y-3 sm:px-3 bg-white/95 backdrop-blur-sm rounded-lg mt-2 shadow-lg border border-gray-200">
             {navLinks.map((link, index) => (
               <a

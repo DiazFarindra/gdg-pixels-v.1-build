@@ -170,7 +170,7 @@ export default function Home() {
                                 </p>
 
                                 <Countdown 
-                                    initialSeconds={getTotalSecondsToDate(new Date('2025-07-30T00:00:00'))} 
+                                    initialSeconds={getTotalSecondsToDate(new Date('2025-07-27T00:00:00'))} 
                                 />
                                 
                             </div>
