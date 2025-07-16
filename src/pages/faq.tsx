@@ -93,7 +93,7 @@ const FAQ: React.FC = () => {
         },
         {
             question: "Apakah kompetisi ini berbayar?",
-            answer: "GRATIS untuk tim yang seluruh anggotanya merupakan mahasiswa STT Terpadu Nurul Fikri. Untuk tim lainnya, dikenakan biaya pendaftaran: Gelombang 1 (1-10 Juli 2025): Rp30.000,- dan Gelombang 2 (11-20 Juli 2025): Rp60.000,-."
+            answer: "GRATIS untuk tim yang seluruh anggotanya merupakan mahasiswa STT Terpadu Nurul Fikri. Untuk tim diluar dari mahasiswa STT Nurul Fikri, dikenakan biaya pendaftaran: Rp. 50.000,-"
         },
         {
             question: "Apakah saya harus sudah punya tim saat mendaftar?",

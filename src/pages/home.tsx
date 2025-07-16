@@ -100,7 +100,7 @@ export default function Home() {
             <Navbar />
 
             {/* Hero Section */}
-            <div className="pt-18 md:pt-20 mt-4 md:mt-16 mx-auto w-full md:w-3/4">
+            <div className="pt-24 mt-8 mx-auto w-full md:w-3/4">
                 <div className="px-4 sm:px-8 md:px-16 flex flex-col items-center">
                     <span className="font-subhero text-sm sm:text-2xl md:mb-6 font-bold text-slate-500">
                         Selamat datang di
