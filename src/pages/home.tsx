@@ -7,7 +7,7 @@ import Timeline from './timeline';
 import RegistrationInfo from './registrationInfo';
 import FAQ from './faq';
 import { useStarAnimation, useMascotAnimation } from '../animations/hooks';
-import { PixelBox, PixelDivider, Navbar, RegistrationModal } from '../components';
+import { PixelBox, PixelDivider, Navbar, RegistrationModal, GuidebookModal } from '../components';
 
 // ============================
 // UTILITY FUNCTIONS
@@ -28,6 +28,7 @@ export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mascotContainerRef = useRef<HTMLDivElement>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isGuidebookModalOpen, setIsGuidebookModalOpen] = useState(false);
     useStarAnimation(canvasRef);
     useMascotAnimation(mascotContainerRef);
 
@@ -132,13 +133,12 @@ export default function Home() {
                         >
                             Daftar Sekarang!
                         </button>
-                        <a 
-                            href="#_" 
-                            onClick={() => alert('handbook will available soon')} 
+                        <button 
+                            onClick={() => setIsGuidebookModalOpen(true)} 
                             className="btn-secondary-standard btn-sm"
                         >
                             Guidebook
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -308,6 +308,12 @@ export default function Home() {
             <RegistrationModal 
                 isOpen={isModalOpen} 
                 onClose={() => setIsModalOpen(false)} 
+            />
+            
+            {/* Guidebook Modal */}
+            <GuidebookModal 
+                isOpen={isGuidebookModalOpen} 
+                onClose={() => setIsGuidebookModalOpen(false)} 
             />
         </>
     );

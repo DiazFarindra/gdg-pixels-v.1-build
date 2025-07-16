@@ -4,3 +4,4 @@ export { default as PixelBox } from './PixelBox';
 export { default as PixelDivider } from './PixelDivider';
 export { default as Navbar } from './Navbar';
 export { default as RegistrationModal } from './RegistrationModal';
+export { default as GuidebookModal } from './GuidebookModal';
