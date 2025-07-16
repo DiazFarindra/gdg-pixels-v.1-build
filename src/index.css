@@ -138,6 +138,10 @@
         @apply border-border;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         @apply bg-background text-foreground;
     }
@@ -441,26 +445,150 @@
        ============================ */
     .pixel-box {
         position: relative;
-        border: 4px solid #1f2937;
-        padding: 1rem;
+        border: 3px solid #1f2937;
+        padding: 0.75rem 1rem;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 10px;
+        line-height: 1.2;
+        text-align: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        user-select: none;
+        box-shadow: 2px 2px 0 rgba(31, 41, 55, 0.3);
+    }
+
+    .pixel-box:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 3px 3px 0 rgba(31, 41, 55, 0.4);
+    }
+
+    .pixel-box:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0 rgba(31, 41, 55, 0.2);
     }
 
     .pixel-box .corner {
         position: absolute;
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         background-color: #1f2937;
     }
 
-    .pixel-box .corner.top-left { top: -4px; left: -4px; }
-    .pixel-box .corner.top-right { top: -4px; right: -4px; }
-    .pixel-box .corner.bottom-left { bottom: -4px; left: -4px; }
-    .pixel-box .corner.bottom-right { bottom: -4px; right: -4px; }
+    .pixel-box .corner.top-left { top: -3px; left: -3px; }
+    .pixel-box .corner.top-right { top: -3px; right: -3px; }
+    .pixel-box .corner.bottom-left { bottom: -3px; left: -3px; }
+    .pixel-box .corner.bottom-right { bottom: -3px; right: -3px; }
 
-    .pixel-box-green { background-color: var(--color-primer-green); }
-    .pixel-box-blue { background-color: var(--color-primer-blue); }
-    .pixel-box-red { background-color: var(--color-primer-red); }
-    .pixel-box-yellow { background-color: var(--color-primer-yellow); }
-    .pixel-box-white { background-color: #ffffff; }
-    .pixel-box-gray { background-color: #f3f4f6; }
-}
+    .pixel-box-green { 
+        background-color: var(--color-primer-green);
+        color: #1f2937;
+    }
+    .pixel-box-blue { 
+        background-color: var(--color-primer-blue);
+        color: #ffffff;
+    }
+    .pixel-box-red { 
+        background-color: var(--color-primer-red);
+        color: #ffffff;
+    }
+    .pixel-box-yellow { 
+        background-color: var(--color-primer-yellow);
+        color: #1f2937;
+    }
+    .pixel-box-white { 
+        background-color: #ffffff;
+        color: #1f2937;
+    }
+    .pixel-box-gray { 
+        background-color: #f3f4f6;
+        color: #1f2937;
+    }
+
+    /* Responsive pixel box sizing */
+    @media (min-width: 640px) {
+        .pixel-box {
+            font-size: 12px;
+            padding: 0.875rem 1.25rem;
+            border-width: 4px;
+        }
+        
+        .pixel-box .corner {
+            width: 8px;
+            height: 8px;
+        }
+        
+        .pixel-box .corner.top-left { top: -4px; left: -4px; }
+        .pixel-box .corner.top-right { top: -4px; right: -4px; }
+        .pixel-box .corner.bottom-left { bottom: -4px; left: -4px; }
+        .pixel-box .corner.bottom-right { bottom: -4px; right: -4px; }
+    }
+
+    @media (min-width: 1024px) {
+         .pixel-box {
+             font-size: 14px;
+             padding: 1rem 1.5rem;
+         }
+     }
+
+     /* Touch device optimizations */
+     .touch-manipulation {
+         touch-action: manipulation;
+         -webkit-tap-highlight-color: transparent;
+     }
+
+     /* Modal animations */
+     @keyframes fade-in {
+         from {
+             opacity: 0;
+         }
+         to {
+             opacity: 1;
+         }
+     }
+
+     @keyframes zoom-in {
+         from {
+             transform: scale(0.9);
+         }
+         to {
+             transform: scale(1);
+         }
+     }
+
+     .animate-in {
+         animation-fill-mode: both;
+     }
+
+     .fade-in {
+         animation-name: fade-in;
+     }
+
+     .zoom-in {
+         animation-name: zoom-in;
+     }
+
+     .duration-300 {
+         animation-duration: 300ms;
+     }
+
+     /* Modal backdrop blur effect */
+     .modal-backdrop {
+         backdrop-filter: blur(8px);
+         -webkit-backdrop-filter: blur(8px);
+     }
+
+     /* Ensure navbar is always clickable on mobile */
+     @media (max-width: 1023px) {
+         header[class*="fixed"] {
+             pointer-events: auto !important;
+             z-index: 9999 !important;
+         }
+         
+         header[class*="fixed"] button,
+         header[class*="fixed"] a {
+             pointer-events: auto !important;
+             touch-action: manipulation;
+             -webkit-tap-highlight-color: transparent;
+         }
+     }
+ }

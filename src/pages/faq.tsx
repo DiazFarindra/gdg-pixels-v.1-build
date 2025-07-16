@@ -62,7 +62,7 @@ const FaqItem = ({ question, answer }: FaqItem) => {
                         opacity: isOpen ? 1 : 0,
                     }}
                 >
-                    <div className={`p-5 pt-2 text-gray-600 font-mono text-sm md:text-base
+                    <div className={`p-4 sm:p-5 pt-2 text-gray-600 font-mono text-xs sm:text-sm md:text-base
                         ${isOpen ? 'animate-contentFadeIn' : ''}`}>
                         {answer}
                     </div>
@@ -106,7 +106,7 @@ const FAQ: React.FC = () => {
     ];
 
     return (
-        <section id="faq" className="py-16 md:py-24 relative">
+        <section id="faq" className="py-8 sm:py-16 md:py-24 relative">
             {/* Animation keyframes */}
             <style>
                 {`
@@ -144,7 +144,7 @@ const FAQ: React.FC = () => {
                 `}
             </style>
             
-            <div className="container mx-auto px-6 lg:px-8 relative z-10 max-w-3xl">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-3xl">
                 {/* Section Title with pixel animations */}
                 <div 
                     className="text-center mb-12 transition-all duration-700"
@@ -153,9 +153,9 @@ const FAQ: React.FC = () => {
                         transform: isVisible ? 'translateY(0)' : 'translateY(-20px)'
                     }}
                 >
-                    <h2 className="font-display text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">
+                    <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">
                         <span className="relative z-10 text-gray-800">FREQUENTLY ASKED QUESTIONS</span>
-                        <span className="absolute inset-0 bg-sekunder-blue opacity-20 transform -skew-x-3"></span>
+                        <span className="absolute inset-0 bg-sekunder-blue opacity-20 transform"></span>
                     </h2>
                     <PixelDivider align="center" className="mt-4 mx-auto" />
                 </div>

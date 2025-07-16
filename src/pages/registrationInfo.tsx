@@ -90,17 +90,17 @@ const RegistrationInfo: React.FC = () => {
         <section 
             id="register" 
             ref={sectionRef}
-            className="py-16 md:py-24 relative"
+            className="py-8 sm:py-16 md:py-24 relative"
         >
             
             {/* No floating animation styles */}
             
-            <div className="container mx-auto px-6 lg:px-8 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Section Title with 8-bit styling */}
                 <div className="text-center mb-12">
-                    <h1 className="font-display text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">
+                    <h1 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">
                         <span className="relative z-10 text-gray-800">PERSYARATAN & CARA DAFTAR</span>
-                        <span className="absolute inset-0 bg-sekunder-yellow opacity-20 transform -skew-x-3"></span>
+                        <span className="absolute inset-0 bg-sekunder-yellow opacity-20 transform "></span>
                     </h1>
                     <PixelDivider align="center" className="mt-4 mx-auto" />
                 </div>
@@ -108,7 +108,7 @@ const RegistrationInfo: React.FC = () => {
                 <div className="grid lg:grid-cols-2 gap-12 relative">
                     {/* Left side animation */}
                     <PixelatedEntry direction="left" delay={0.2}>
-                        <h2 className="font-display text-xl md:text-2xl text-gray-800 mb-4">
+                        <h2 className="font-display text-lg sm:text-xl md:text-2xl text-gray-800 mb-4">
                             Persyaratan
                         </h2>
                         <PixelDivider align="left" className="mb-8" />
@@ -116,7 +116,7 @@ const RegistrationInfo: React.FC = () => {
                             color="white" 
                             className="p-6 transform hover:scale-[1.01] transition-transform duration-500"
                         >
-                            <ul className="space-y-5 text-gray-600 font-mono text-sm md:text-base">
+                            <ul className="space-y-4 sm:space-y-5 text-gray-600 font-mono text-xs sm:text-sm md:text-base">
                                 <PixelatedItem iconContent="✓" delay={0.3}>
                                     <strong className="text-gray-800">Peserta:</strong> Pelajar aktif tingkat SMA/SMK sederajat serta Mahasiswa aktif (S1/Diploma) dari seluruh Indonesia.
                                 </PixelatedItem>
@@ -146,7 +146,7 @@ const RegistrationInfo: React.FC = () => {
                             color="white" 
                             className="p-6 transform hover:scale-[1.01] transition-transform duration-500"
                         >
-                            <ol className="space-y-6 text-gray-600 font-mono text-sm md:text-base">
+                            <ol className="space-y-4 sm:space-y-6 text-gray-600 font-mono text-xs sm:text-sm md:text-base">
                                 <PixelatedItem iconContent="1" delay={0.4} type="number">
                                     Kunjungi link pendaftaran: <a href="https://s.id/PIXELS-Regist" target="_blank" className="font-semibold text-sekunder-blue hover:underline">s.id/PIXELS-Regist</a>
                                 </PixelatedItem>

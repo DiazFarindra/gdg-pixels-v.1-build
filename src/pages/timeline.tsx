@@ -180,7 +180,7 @@ const Timeline: React.FC = () => {
 
     const timelineData: TimelineItem[] = [
         {
-            date: "12 - 30 Juli 2025",
+            date: "16 - 27 Juli 2025",
             event: "Pendaftaran",
             description: "Buka pendaftaran untuk semua calon peserta.",
             color: 'blue',
@@ -304,8 +304,8 @@ const Timeline: React.FC = () => {
     return (
         <>
             <style>{styles}</style>
-            <section id="timeline" className="py-16 md:py-24">
-                <div className="container mx-auto px-6 lg:px-8 max-w-5xl">
+            <section id="timeline" className="py-8 sm:py-16 md:py-24">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
                 {/* Clean Header */}
                 <div className="text-center mb-16">
                         <h2 className="font-display text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">
@@ -321,7 +321,7 @@ const Timeline: React.FC = () => {
                 {/* Compact Timeline with Clear Guide */}
                 <div className="relative max-w-3xl mx-auto timeline-container">
                     {/* Main Timeline Guide Line - Dynamic responsive positioning */}
-                    <div className="absolute left-9 w-1 bg-gray-800 z-0" 
+                    <div className="absolute left-4 sm:left-9 w-1 bg-gray-800 z-0" 
                          style={{ 
                              top: '36px', // Start from center of first node
                              height: timelineHeight,
@@ -430,14 +430,14 @@ const Timeline: React.FC = () => {
                                             </div>
 
                                             {/* Event Title */}
-                                            <h3 className={`font-display text-base md:text-lg text-gray-800 mb-3 leading-relaxed transition-all duration-700 ${
+                                            <h3 className={`font-display text-sm sm:text-base md:text-lg text-gray-800 mb-3 leading-relaxed transition-all duration-700 ${
                                                 visibleItems.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                                             }`} style={{ animationDelay: `${index * 200 + 500}ms` }}>
                                                 {item.event}
                                             </h3>
 
                                             {/* Description */}
-                                            <p className={`font-mono text-sm text-gray-600 leading-relaxed transition-all duration-900 ${
+                                            <p className={`font-mono text-xs sm:text-sm text-gray-600 leading-relaxed transition-all duration-900 ${
                                                 visibleItems.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                                             }`} style={{ animationDelay: `${index * 200 + 700}ms` }}>
                                                 {item.description}

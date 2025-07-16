@@ -19,23 +19,35 @@ const Countdown = ({ initialSeconds = 60 }) => {
         return () => clearInterval(timerInterval);
     }, []);
 
-    const getTime = (totalSeconds: number): { hours: number; minutes: number; seconds: number } => {
-        const hours: number = Math.floor(totalSeconds / 3600);
+    const getTime = (totalSeconds: number): { days: number; hours: number; minutes: number; seconds: number } => {
+        const days: number = Math.floor(totalSeconds / 86400);
+        const hours: number = Math.floor((totalSeconds % 86400) / 3600);
         const minutes: number = Math.floor((totalSeconds % 3600) / 60);
         const seconds: number = totalSeconds % 60;
 
         return {
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
+            days,
+            hours,
+            minutes,
+            seconds,
         };
     };
 
     return (
         <div className='mt-4 md:mt-14 font-hero flex items-center justify-center gap-4'>
             <Counter
-                value={getTime(timeRemaining).hours}
+                value={getTime(timeRemaining).days}
                 places={[100, 10, 1]}
+                fontSize={80}
+                padding={5}
+                gap={10}
+                textColor="black"
+                fontWeight={900}
+            />
+            :
+            <Counter
+                value={getTime(timeRemaining).hours}
+                places={[10, 1]}
                 fontSize={80}
                 padding={5}
                 gap={10}

@@ -261,8 +261,10 @@ export const useMascotAnimation = (containerRef: React.RefObject<HTMLDivElement 
 
     const handleNewMascot = useCallback((currentTime: number) => {
         if (currentTime > nextMascotTimeRef.current && containerElementRef.current) {
-            const rect = containerElementRef.current.getBoundingClientRect();
-            const { x, y } = getRandomMascotPosition(rect.width, rect.height);
+            // Use document dimensions for absolute positioning
+            const containerWidth = document.documentElement.scrollWidth;
+            const containerHeight = document.documentElement.scrollHeight;
+            const { x, y } = getRandomMascotPosition(containerWidth, containerHeight);
             
             createMascot(x, y);
 

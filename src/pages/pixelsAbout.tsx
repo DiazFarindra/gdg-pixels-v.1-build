@@ -6,23 +6,24 @@ const PixelsAbout: React.FC = () => {
     return (
         <div>
             {/* Main About Section */}
-            <section id="about" className="py-8 md:py-16 lg:py-24 relative overflow-hidden">
+            <section id="about" className="py-4 sm:py-8 md:py-16 lg:py-24 relative overflow-hidden">
                 {/* Background Animation Stars sudah ada dari useStarAnimation */}
                 
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+                <div className="container mx-auto px-2 sm:px-4 lg:px-8 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 md:gap-12 lg:gap-16 items-center">
                         {/* Left Content */}
                         <div className="space-y-6">
                             <div className="space-y-4">
                                 <h2 className="font-hero text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-800 leading-tight">
                                     Apa itu 
-                                    <span className="block font-display text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-sekunder-blue mt-2">
+                                    <span className="block font-display text-sm sm:text-base md:text-xl lg:text-2xl xl:text-3xl text-sekunder-blue mt-1 sm:mt-2">
                                         PIXELS Challenge?
                                     </span>
                                 </h2>
                                 <PixelDivider align="left" className="mt-6" />
                             </div>
 
+                            <PixelBox color="white" className="p-4">
                             <div className="space-y-4 text-gray-600 leading-relaxed">
                                 <p className="text-sm font-mono sm:text-base md:text-lg">
                                     <strong className="text-gray-800">PIXELS Challenge</strong> adalah lomba Desain Produk berbasis studi kasus yang mendorong peserta untuk menggabungkan konsep desain UI/UX dan Produk dengan Tujuan Pembangunan Berkelanjutan (SDGs).
@@ -32,6 +33,7 @@ const PixelsAbout: React.FC = () => {
                                     Kompetisi ini berfokus pada pengembangan solusi inovatif yang dapat diimplementasikan, dengan penekanan pada visual kreatif, kerja sama tim, pemecahan masalah, dan inovasi bisnis, serta <strong className="text-sekunder-blue">wajib memanfaatkan potensi kecerdasan buatan (AI)</strong>.
                                 </p>
                             </div>
+                            </PixelBox>
 
                             {/* 8-bit Style Features */}
                             <div className="grid grid-cols-2 gap-4 mt-6 md:mt-8">
@@ -105,7 +107,7 @@ const PixelsAbout: React.FC = () => {
             </section>
 
             {/* Themes Section */}
-            <section className="py-8 sm:py-12 md:py-16 mt-8 sm:mt-12 md:mt-16">
+            <section className="py-4 sm:py-8 md:py-16 mt-4 sm:mt-8 md:mt-16">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-6 sm:mb-8 md:mb-12">
                         <h2 className="font-display text-2xl md:text-3xl lg:text-4xl inline-block relative px-4 py-2">

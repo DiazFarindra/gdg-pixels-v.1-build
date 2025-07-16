@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Arrow from '../three/arrow';
 import { PixelTransition, ScrambledText } from '../animations';
 import Countdown from './countdown';
@@ -7,6 +7,7 @@ import Timeline from './timeline';
 import RegistrationInfo from './registrationInfo';
 import FAQ from './faq';
 import { useStarAnimation, useMascotAnimation } from '../animations/hooks';
+import { PixelBox, PixelDivider, Navbar } from '../components';
 
 // ============================
 // UTILITY FUNCTIONS
@@ -26,8 +27,31 @@ export default function Home() {
     // ============================
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const mascotContainerRef = useRef<HTMLDivElement>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     useStarAnimation(canvasRef);
     useMascotAnimation(mascotContainerRef);
+
+    // Set mascot container height to document height to prevent following scroll
+    useEffect(() => {
+        const updateMascotContainerHeight = () => {
+            if (mascotContainerRef.current) {
+                mascotContainerRef.current.style.height = `${document.documentElement.scrollHeight}px`;
+            }
+        };
+
+        updateMascotContainerHeight();
+        window.addEventListener('resize', updateMascotContainerHeight);
+        
+        // Update height when content changes
+        const observer = new MutationObserver(updateMascotContainerHeight);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        return () => {
+            window.removeEventListener('resize', updateMascotContainerHeight);
+            observer.disconnect();
+        };
+    }, []);
+
 
     // ============================
     // RENDER
@@ -56,7 +80,7 @@ export default function Home() {
             <div 
                 ref={mascotContainerRef}
                 style={{
-                    position: 'fixed',
+                    position: 'absolute',
                     top: 0,
                     left: 0,
                     width: '100%',
@@ -71,22 +95,12 @@ export default function Home() {
             {/* ============================
                 MAIN CONTENT
                 ============================ */}
-            <div className="" style={{ position: 'relative', zIndex: 10 }}>
-                {/* Navigation */}
-                <nav className="flex items-center justify-center pb-5 pt-4">
-                    <div className="w-16 h-full">
-                        <img 
-                            src="/gdg.png" 
-                            alt="GDG (Google Developer Group) logo" 
-                            loading="lazy" 
-                        />
-                    </div>
-                </nav>
-            </div>
+            {/* Navigation */}
+            <Navbar />
 
             {/* Hero Section */}
-            <div className="mt-6 md:mt-16 mx-auto w-full md:w-3/4" style={{ position: 'relative', zIndex: 10 }}>
-                <div className="px-16 flex flex-col items-center">
+            <div className="pt-18 md:pt-20 mt-4 md:mt-16 mx-auto w-full md:w-3/4" style={{ position: 'relative', zIndex: 10 }}>
+                <div className="px-4 sm:px-8 md:px-16 flex flex-col items-center">
                     <span className="font-subhero text-sm sm:text-2xl md:mb-6 font-bold text-slate-500">
                         Selamat datang di
                     </span>
@@ -112,12 +126,12 @@ export default function Home() {
                     />
                     
                     <div className="mt-6 md:mt-20 flex flex-row text-xs md:flex-row md:text-s items-center gap-4 md:gap-20">
-                        <a 
-                            href="#countdown" 
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
                             className="btn-primary-standard text-md"
                         >
                             Daftar Sekarang!
-                        </a>
+                        </button>
                         <a 
                             href="#_" 
                             onClick={() => alert('handbook will available soon')} 
@@ -129,12 +143,14 @@ export default function Home() {
                 </div>
             </div>
 
+            
             {/* Countdown Section */}
             <div 
                 id="countdown" 
-                className="mt-28 md:mt-48 mx-auto px-12 md:px-36" 
+                className="mt-16 sm:mt-28 md:mt-48 mx-auto px-4 sm:px-8 md:px-12 lg:px-36" 
                 style={{ position: 'relative', zIndex: 10 }}
             >
+                <PixelDivider />
                 <PixelTransition
                     className="w-full h-full md:h-[35rem] overflow-hidden rounded-xl bg-transparent"
                     gridSize={10}
@@ -142,18 +158,21 @@ export default function Home() {
                     animationStepDuration={0.3}
                     firstContent={
                         <div className="grid place-items-center w-full h-full">
+                            
                             <div>
                                 <p className="font-hero text-center text-base md:text-4xl font-bold">
-                                    <b className="text-sekunder-green">c</b>o
-                                    <b className="text-sekunder-blue">m</b>m
-                                    <b className="text-sekunder-red">i</b>ng{' '}
-                                    <b className="text-sekunder-yellow">s</b>o
+                                    <b className="text-sekunder-green">o</b>p
+                                    <b className="text-sekunder-blue">e</b>n{' '}
+                                    <b className="text-sekunder-red">re</b>gist
+                                    <b className="text-sekunder-yellow">tra</b>ti
                                     <b className="text-sekunder-red">o</b>n
                                     <b className="text-sekunder-blue">!</b>
                                 </p>
+
                                 <Countdown 
-                                    initialSeconds={getTotalSecondsToDate(new Date('2025-07-12T19:00:00'))} 
+                                    initialSeconds={getTotalSecondsToDate(new Date('2025-07-30T00:00:00'))} 
                                 />
+                                
                             </div>
                         </div>
                     }
@@ -286,6 +305,76 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            {/* Registration Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 z-[10001] flex items-center justify-center p-2 md:p-4 modal-backdrop bg-black/20">
+                    <div className="relative w-full max-w-6xl h-full max-h-[98vh] md:max-h-[95vh] animate-in fade-in zoom-in duration-300">
+                        {/* Modal Header */}
+                        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 mb-3 md:mb-4">
+                            <PixelBox color="green" className="text-[10px] sm:text-xs md:text-sm flex-shrink-0">
+                                📝 Form Pendaftaran PIXELS Challenge
+                            </PixelBox>
+                            
+                            {/* Close Button */}
+                            <PixelBox 
+                                color="red" 
+                                className="text-[#1e1e1e] cursor-pointer hover:scale-105 transition-transform duration-200 text-[10px] sm:text-xs md:text-sm flex-shrink-0"
+                                onClick={() => setIsModalOpen(false)}
+                            >
+                                ✕ TUTUP
+                            </PixelBox>
+                        </div>
+                        
+                        {/* Modal Content */}
+                        <div className="relative h-[calc(100%-3rem)] sm:h-[calc(100%-4rem)]">
+                            <PixelBox color="white" className="h-full p-0 overflow-hidden">
+                                <div className="relative w-full h-full">
+                                    <iframe
+                                        src="https://docs.google.com/forms/d/e/1FAIpQLSdHM6lWZmQtPHEnGRc6TLVrI21gDxC_bCn2NSV9rqSCsQPsGg/viewform?embedded=true"
+                                        width="100%"
+                                        height="100%"
+                                        frameBorder="0"
+                                        marginHeight={0}
+                                        marginWidth={0}
+                                        title="Form Pendaftaran PIXELS Challenge"
+                                        className="w-full h-full"
+                                        style={{ border: 'none', minHeight: '500px' }}
+                                        loading="lazy"
+                                    >
+                                        <div className="flex items-center justify-center h-full p-4">
+                                            <PixelBox color="yellow" className="text-[10px] sm:text-xs md:text-sm">
+                                                ⏳ Loading Form...
+                                            </PixelBox>
+                                        </div>
+                                    </iframe>
+                                    
+                                    {/* Loading overlay */}
+                                    <div className="absolute inset-0 bg-white flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500" id="loading-overlay">
+                                        <PixelBox color="blue" className="text-[10px] sm:text-xs md:text-sm">
+                                            🚀 Memuat Form...
+                                        </PixelBox>
+                                    </div>
+                                </div>
+                            </PixelBox>
+                        </div>
+                        
+                        {/* Modal Footer */}
+                        <div className="absolute bottom-2 md:bottom-4 left-1/2 transform -translate-x-1/2 hidden sm:block">
+                            <PixelBox color="blue" className="text-[10px] sm:text-xs opacity-75">
+                                💡 Tip: Gunakan mode landscape untuk pengalaman terbaik
+                            </PixelBox>
+                        </div>
+                    </div>
+                    
+                    {/* Background Click to Close */}
+                    <div 
+                        className="absolute inset-0 -z-10" 
+                        onClick={() => setIsModalOpen(false)}
+                        aria-label="Close modal"
+                    />
+                </div>
+            )}
         </>
     );
 }
