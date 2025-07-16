@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PixelBox from '../components/PixelBox';
 import PixelDivider from '../components/PixelDivider';
+import { RegistrationModal } from '../components';
 
 const PixelsAbout: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-        <div>
+        <>
+            <div>
             {/* Main About Section */}
             <section id="about" className="py-4 sm:py-8 md:py-16 lg:py-24 relative overflow-hidden">
                 {/* Background Animation Stars sudah ada dari useStarAnimation */}
@@ -171,16 +175,24 @@ const PixelsAbout: React.FC = () => {
 
                     {/* Final Call to Action */}
                     <div className="text-center mt-6 sm:mt-8 md:mt-12">
-                        <a 
-                            href="#countdown" 
+                        <button 
+                            onClick={() => setIsModalOpen(true)}
                             className="btn-secondary-standard"
                         >
                             Daftar Sekarang
-                        </a>
+                        </button>
                     </div>
                 </div>
             </section>
-        </div>
+
+            </div>
+            
+            {/* Registration Modal */}
+            <RegistrationModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
+        </>
     );
 };
 

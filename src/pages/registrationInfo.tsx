@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PixelBox from '../components/PixelBox';
 import PixelDivider from '../components/PixelDivider';
+import { RegistrationModal } from '../components';
 import { useInView } from 'react-intersection-observer';
 
 // Animation component for sections with 8-bit style entry animation
@@ -83,6 +84,7 @@ const PixelatedItem = ({
 // Main component 
 const RegistrationInfo: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     // Section reference for component structure only
 
@@ -148,15 +150,16 @@ const RegistrationInfo: React.FC = () => {
                         >
                             <ol className="space-y-4 sm:space-y-6 text-gray-600 font-mono text-xs sm:text-sm md:text-base">
                                 <PixelatedItem iconContent="1" delay={0.4} type="number">
-                                    Kunjungi link pendaftaran: <a href="https://s.id/PIXELS-Regist" target="_blank" className="font-semibold text-sekunder-blue hover:underline">s.id/PIXELS-Regist</a>
+                                    Kunjungi link pendaftaran: <a href="https://s.id/PIXELS2-Regist" target="_blank" className="font-semibold text-sekunder-blue hover:underline">s.id/PIXELS2-Regist</a>
                                 </PixelatedItem>
                                 
                                 <PixelatedItem iconContent="2" delay={0.5} type="number">
-                                    Klik <strong className="text-gray-800">"Get Ticket"</strong> dan isi Google Form dengan data tim yang lengkap.
+                                    Anda akan diarahkan untuk <strong className="text-gray-800">mengisi data diri </strong>, dan persyaratan pada Google Form.
                                 </PixelatedItem>
                                 
                                 <PixelatedItem iconContent="3" delay={0.6} type="number">
-                                    Setelah selesai, <strong className="text-gray-800">wajib bergabung ke Grup Whatsapp</strong> untuk mendapatkan semua informasi terbaru.
+                                    Setelah selesai,wajib bergabung ke Grup Whatsapp untuk mendapatkan semua informasi terbaru.
+                                    Setelah selesai mendaftar, peserta  <strong className="text-gray-800">akan mendapatkan Email/Whatsapp </strong> dari panitia untuk join Grup PIXELS Challenge 2.0
                                 </PixelatedItem>
                             </ol>
                         </PixelBox>
@@ -172,16 +175,21 @@ const RegistrationInfo: React.FC = () => {
                 
                 {/* Bottom CTA */}
                 <div className="text-center mt-16">
-                    <a 
-                        href="https://s.id/PIXELS-Regist" 
-                        target="_blank"
+                    <button 
+                        onClick={() => setIsModalOpen(true)}
                         className="btn-primary-standard inline-block relative overflow-hidden group"
                     >
                         <span className="relative z-10">Daftar Sekarang!</span>
                         <span className="absolute inset-0 bg-sekunder-blue opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                    </a>
+                    </button>
                 </div>
             </div>
+
+            {/* Registration Modal */}
+            <RegistrationModal 
+                isOpen={isModalOpen} 
+                onClose={() => setIsModalOpen(false)} 
+            />
         </section>
     );
 };
