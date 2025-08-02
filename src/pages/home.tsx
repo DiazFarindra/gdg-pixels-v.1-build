@@ -169,7 +169,7 @@ export default function Home() {
                                 </p>
 
                                 <Countdown 
-                                    initialSeconds={getTotalSecondsToDate(new Date('2025-07-27T00:00:00'))} 
+                                    initialSeconds={getTotalSecondsToDate(new Date('2025-08-09T23:59:00'))} 
                                 />
                                 
                             </div>
@@ -276,16 +276,9 @@ export default function Home() {
                             <div className="bg-[#272727] px-4 py-3 rounded border-2 border-sekunder-green">
                                 <p className="text-gray-300 font-mono">
                                     <span className="inline-block w-2 h-2 bg-sekunder-green mr-2"></span>
-                                    Amanda Fiqih Hauli
+                                    Admin GDGoC NF
                                 </p>
-                                <p className="text-gray-400 font-mono pl-4">0877-1275-4959</p>
-                            </div>
-                            <div className="bg-[#272727] px-4 py-3 rounded border-2 border-sekunder-blue">
-                                <p className="text-gray-300 font-mono">
-                                    <span className="inline-block w-2 h-2 bg-sekunder-blue mr-2"></span>
-                                    Alif Surya Pratama
-                                </p>
-                                <p className="text-gray-400 font-mono pl-4">0812-8277-6949</p>
+                                <p className="text-gray-400 font-mono pl-4">08319941998</p>
                             </div>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ const GuidebookModal: React.FC<GuidebookModalProps> = ({ isOpen, onClose }) => {
           <PixelBox color="white" className="h-full p-0 overflow-hidden">
             <div className="relative w-full h-full">
               <iframe
-                src="https://drive.google.com/file/d/1Cnuv4EQNQidLd1cJXTgj_tDNe3nVslNt/preview"
+                src="https://drive.google.com/file/d/19sv0cZrqUSBvs0lYb0nWkxQm1R10AUsO/preview"
                 width="100%"
                 height="100%"
                 frameBorder="0"

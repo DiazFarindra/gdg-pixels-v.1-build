@@ -106,6 +106,11 @@ const Timeline: React.FC = () => {
         // Event is active if today is within the date range
         return today >= startDate && today <= endDate;
     };
+
+    // Function to check if event is extended
+    const isEventExtended = (eventName: string): boolean => {
+        return eventName === "Pendaftaran";
+    };
     
     // Calculate precise timeline height to reach the LAST node accurately
     const calculateTimelineHeight = () => {
@@ -180,11 +185,11 @@ const Timeline: React.FC = () => {
 
     const timelineData: TimelineItem[] = [
         {
-            date: "16 - 27 Juli 2025",
+            date: "16 Juli - 9 Agustus 2025",
             event: "Pendaftaran",
             description: "Buka pendaftaran untuk semua calon peserta.",
             color: 'blue',
-            isCompleted: isEventCompleted("12 - 30 Juli 2025")
+            isCompleted: isEventCompleted("16 Juli - 9 Agustus 2025")
         },
         {
             date: "02 Agustus 2025",
@@ -349,9 +354,11 @@ const Timeline: React.FC = () => {
                                     <div className={`w-6 h-6 border-2 border-gray-800 relative transition-all duration-300 group-hover:scale-110 ${
                                         item.isCompleted 
                                             ? 'bg-sekunder-green' 
-                                            : isEventActive(item.date)
-                                                ? 'bg-sekunder-yellow'
-                                                : 'bg-white'
+                                            : isEventExtended(item.event)
+                                                ? 'bg-sekunder-red'
+                                                : isEventActive(item.date)
+                                                    ? 'bg-sekunder-yellow'
+                                                    : 'bg-white'
                                     }`}>
                                         {/* 8-bit corners with hover animation */}
                                         <div className="absolute -top-1 -left-1 w-2 h-2 bg-gray-800 transition-all duration-300 group-hover:w-3 group-hover:h-3"></div>
@@ -367,7 +374,13 @@ const Timeline: React.FC = () => {
                                         )}
                                         
                                         {/* Current event pulse - Enhanced */}
-                                        {!item.isCompleted && isEventActive(item.date) && (
+                                        {!item.isCompleted && isEventExtended(item.event) && (
+                                            <>
+                                                <div className="absolute -inset-1 bg-sekunder-red animate-ping opacity-50"></div>
+                                                <div className="absolute -inset-2 bg-sekunder-red animate-pulse opacity-30"></div>
+                                            </>
+                                        )}
+                                        {!item.isCompleted && !isEventExtended(item.event) && isEventActive(item.date) && (
                                             <>
                                                 <div className="absolute -inset-1 bg-sekunder-yellow animate-ping opacity-50"></div>
                                                 <div className="absolute -inset-2 bg-sekunder-yellow animate-pulse opacity-30"></div>
@@ -419,11 +432,12 @@ const Timeline: React.FC = () => {
                                                 </PixelBox>
                                                 
                                                 <PixelBox 
-                                                    color={item.isCompleted ? 'green' : isEventActive(item.date) ? 'yellow' : 'gray'}
+                                                    color={item.isCompleted ? 'green' : isEventExtended(item.event) ? 'red' : isEventActive(item.date) ? 'yellow' : 'gray'}
                                                     className={`px-2 py-1 text-xs font-display transition-all duration-300 hover:scale-105 ${isEventActive(item.date) ? 'animate-pulse' : ''}`}
                                                 >
                                                     <span className="text-gray-800">
                                                         {item.isCompleted ? 'DONE' : 
+                                                         isEventExtended(item.event) ? 'EXTENDED' : 
                                                          isEventActive(item.date) ? 'ACTIVE' : 'SOON'}
                                                     </span>
                                                 </PixelBox>
